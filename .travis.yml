@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -f Dockerfile.dev -t firith/travis-docker-test .
+
+script:
+  - docker run -e CI=true firith/travis-docker-test npm run test
